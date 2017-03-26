@@ -58,6 +58,18 @@ def quesSet1():
         quesList.append(random.choice([addition(startOfRange, endOfRange),
         multiplication(startOfRange, endOfRange), division(startOfRange, endOfRange),
         subtraction(startOfRange, endOfRange)]))
+        # if i >= 41 and i <= 80:
+        #     startOfRange=11
+        #     endOfRange=100
+        #     quesList.append(random.choice([addition(startOfRange, endOfRange),
+        #     multiplication(startOfRange, endOfRange), division(startOfRange, endOfRange),
+        #     subtraction(startOfRange, endOfRange)]))
+        # if i >= 81 and i <= 120:
+        #     startOfRange=101
+        #     endOfRange=999
+        #     quesList.append(random.choice([addition(startOfRange, endOfRange),
+        #     multiplication(startOfRange, endOfRange), division(startOfRange, endOfRange),
+        #    subtraction(startOfRange, endOfRange)]))
     questionObj = QuesSet_v1()
     questionObj.questionSet=json.dumps(quesList)
     questionObj.questionTimeStamp=int(time())

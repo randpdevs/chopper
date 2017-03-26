@@ -6,7 +6,7 @@ import requests
 import responses
 import json
 
-from APIv1 import genQuestion, getQuestion, getRanking, submitRanking
+from APIv1 import genQuestion, getQuestion, ranking, submitRanking
 # Create your views here.
 class genQuesAPI(APIView):
 	def post(self, request, format=None):
@@ -22,11 +22,12 @@ class genQuesAPI1(APIView):
 class getQuesApi(APIView):
     def post(self, request, format=None):
         returnData = getQuestion.getQuestionSet(request.data['clientTimeStamp'])
+        #print type(returnData)
         return Response(returnData, status=status.HTTP_202_ACCEPTED)
 
 class getRankApi(APIView):
     def post(self,request,format=None):
-        returnData = getRanking.rankingFunction(request.data)
+        returnData = ranking.rankingFunction(request.data)
         return Response(returnData, status=status.HTTP_202_ACCEPTED)
 
 
@@ -34,3 +35,7 @@ class submitRankApi(APIView):
     def post(self, request, format=None):
         returnData = submitRanking.submitRank(request.data)
         return Response(returnData, status=status.HTTP_202_ACCEPTED)
+
+
+
+
