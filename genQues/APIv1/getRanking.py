@@ -9,7 +9,3 @@ def rankingFunction(data):
         rank = rank+1
         sendData.append({"userName":i.userName,"Rank":rank})
     return sendData
-
-
-
-

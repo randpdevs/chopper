@@ -19,6 +19,3 @@ def getQuestionSet(questionTime):
         returnData.append({"QuesSet": questionObj.questionID,"EndTime":int(questionObj.questionTimeStamp)+30,"StartTime":int(time())})
         returnData.append({"answer":"Time's up","firstNumber":0,"operator":"~","secondNumber":0})
         return returnData
-
-
-

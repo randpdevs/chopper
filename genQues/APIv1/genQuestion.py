@@ -75,4 +75,3 @@ def quesSet1():
     questionObj.questionTimeStamp=int(time())
     questionObj.save()
     return quesList
-
