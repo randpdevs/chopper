@@ -36,6 +36,34 @@ class submitRankApi(APIView):
         returnData = submitRanking.submitRank(request.data)
         return Response(returnData, status=status.HTTP_202_ACCEPTED)
 
+class getQuesApi1(APIView):
+    def post(self, request, format=None):
+        returnData = getQuestion.getQuestionSetv1(request.data['clientTimeStamp'])
+        return Response(returnData, status=status.HTTP_202_ACCEPTED)
+
+
+class genQuesAPIForTomorrow(APIView):
+	def post(self, request, format=None):
+		returnData = genQuestion.quesSetForTomorrow()
+		return Response(returnData, status=status.HTTP_202_ACCEPTED)
+class genQuesAPIForToday(APIView):
+	def post(self, request, format=None):
+		returnData = genQuestion.quesSetForTomorrow()
+		return Response(returnData, status=status.HTTP_202_ACCEPTED)
+
+
+class getQuesApi2(APIView):
+    def post(self, request, format=None):
+        returnData = getQuestion.getQuestionSetv2()
+        return Response(returnData, status=status.HTTP_202_ACCEPTED)
+
+
+import datetime
+class FetchServerTime(APIView):
+    def post(self, request, format=None):
+        returnData = str(datetime.datetime.today())
+        return Response(returnData, status=status.HTTP_202_ACCEPTED)
+
 
 
 
