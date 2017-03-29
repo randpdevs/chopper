@@ -57,6 +57,11 @@ class getQuesApi2(APIView):
         returnData = getQuestion.getQuestionSetv2()
         return Response(returnData, status=status.HTTP_202_ACCEPTED)
 
+class DeleteQues(APIView):
+    def post(self, request, format=None):
+        returnData = genQuestion.deleteQuestion(request.data['Date'])
+        return Response(returnData, status=status.HTTP_202_ACCEPTED)
+
 
 
 import datetime
@@ -64,6 +69,7 @@ class FetchServerTime(APIView):
     def post(self, request, format=None):
         returnData = str(datetime.datetime.today())
         return Response(returnData, status=status.HTTP_202_ACCEPTED)
+
 
 
 

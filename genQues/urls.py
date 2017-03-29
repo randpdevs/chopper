@@ -14,5 +14,6 @@ urlpatterns = [
     url(r'^genQuestForTomorrow/$', views.genQuesAPIForTomorrow.as_view()),
     url(r'^genQuestForToday/$', views.genQuesAPIForToday.as_view()),
     url(r'^fetchservertime/$', views.FetchServerTime.as_view()),
+    url(r'^deleteques/$', views.DeleteQues.as_view()),
 
 ]

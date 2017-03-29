@@ -145,3 +145,12 @@ def quesSetForToday():
     else:
         return "Already_generated"
 
+def deleteQuestion(today_date):
+    try:
+        quesObj = QuesSet_v2.objects.filter(questionDate=today_date)
+        quesObj.delete()
+        return "SUCCESS"
+    except Exception as e:
+        pass
+
+    return "FAILED"
