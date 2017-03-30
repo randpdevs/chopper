@@ -48,7 +48,7 @@ class genQuesAPIForTomorrow(APIView):
 		return Response(returnData, status=status.HTTP_202_ACCEPTED)
 class genQuesAPIForToday(APIView):
 	def post(self, request, format=None):
-		returnData = genQuestion.quesSetForTomorrow()
+		returnData = genQuestion.quesSetForToday()
 		return Response(returnData, status=status.HTTP_202_ACCEPTED)
 
 
