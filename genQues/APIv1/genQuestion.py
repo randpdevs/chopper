@@ -90,7 +90,7 @@ def quesSetForTomorrow():
             questionSetObj = QuesSet_v2()
             questionSetObj.questionDate = tomorrow
             quesList = []
-            for j in range(0,10):
+            for j in range(0,120):
                 startOfRange=1
                 endOfRange=10
                 quesList.append(random.choice([addition(startOfRange, endOfRange),
