@@ -5,70 +5,105 @@ from rest_framework import status
 import requests
 import responses
 import json
-
-from APIv1 import genQuestion, getQuestion, ranking, submitRanking
+import datetime
+from APIv1 import genQuestion, getQuestion, getRanking, submitRanking, apiPassword
 # Create your views here.
-class genQuesAPI(APIView):
-	def post(self, request, format=None):
-		returnData = genQuestion.quesSet(request.data['firstNumber'], request.data['secondNumber'])
-		return Response(returnData, status=status.HTTP_202_ACCEPTED)
-
-class genQuesAPI1(APIView):
-	def post(self, request, format=None):
-		returnData = genQuestion.quesSet1()
-		print type(returnData)
-		return Response(returnData, status=status.HTTP_202_ACCEPTED)
-
-class getQuesApi(APIView):
-    def post(self, request, format=None):
-        returnData = getQuestion.getQuestionSet(request.data['clientTimeStamp'])
-        #print type(returnData)
-        return Response(returnData, status=status.HTTP_202_ACCEPTED)
-
 class getRankApi(APIView):
+
+
     def post(self,request,format=None):
-        returnData = ranking.rankingFunction(request.data)
-        return Response(returnData, status=status.HTTP_202_ACCEPTED)
+
+
+        returnData = getRanking.rankingFunction(request.data)
+        if returnData != '400':
+            return Response(returnData, status=status.HTTP_202_ACCEPTED)
+        else :
+            return Response(returnData, status = status.HTTP_400_BAD_REQUEST)
+
 
 
 class submitRankApi(APIView):
-    def post(self, request, format=None):
-        returnData = submitRanking.submitRank(request.data)
-        return Response(returnData, status=status.HTTP_202_ACCEPTED)
 
-class getQuesApi1(APIView):
+
     def post(self, request, format=None):
-        returnData = getQuestion.getQuestionSetv1(request.data['clientTimeStamp'])
+
+
+        returnData = submitRanking.submitRank(request.data)
         return Response(returnData, status=status.HTTP_202_ACCEPTED)
 
 
 class genQuesAPIForTomorrow(APIView):
+
+
 	def post(self, request, format=None):
-		returnData = genQuestion.quesSetForTomorrow()
+
+
+		returnData = genQuestion.quesSetForTomorrow(request.data)
 		return Response(returnData, status=status.HTTP_202_ACCEPTED)
+
+
 class genQuesAPIForToday(APIView):
+
+
 	def post(self, request, format=None):
-		returnData = genQuestion.quesSetForToday()
+
+
+		returnData = genQuestion.quesSetForToday(request.data)
 		return Response(returnData, status=status.HTTP_202_ACCEPTED)
 
 
 class getQuesApi2(APIView):
+
+
     def post(self, request, format=None):
-        returnData = getQuestion.getQuestionSetv2()
+
+
+        returnData = getQuestion.getQuestionSetv2(request.data)
         return Response(returnData, status=status.HTTP_202_ACCEPTED)
+
 
 class DeleteQues(APIView):
+
+
     def post(self, request, format=None):
-        returnData = genQuestion.deleteQuestion(request.data['Date'])
+        returnData = genQuestion.deleteQuestion(request.data)
         return Response(returnData, status=status.HTTP_202_ACCEPTED)
 
 
-
-import datetime
 class FetchServerTime(APIView):
+
+
     def post(self, request, format=None):
+
+
         returnData = str(datetime.datetime.today())
         return Response(returnData, status=status.HTTP_202_ACCEPTED)
+
+
+class SetApiPassword(APIView):
+
+
+    def post(self, request, format=None):
+
+
+        returnData = apiPassword.setPassword(request.data)
+        if returnData != '400':
+            return Response(returnData, status=status.HTTP_202_ACCEPTED)
+        else:
+            return Response(returnData, status = status.HTTP_400_BAD_REQUEST)
+
+
+class ModifyApiPassword(APIView):
+
+
+    def post(self, request, format=None):
+
+
+        returnData = apiPassword.modifyPassword(request.data)
+        if returnData != '400':
+            return Response(returnData, status=status.HTTP_202_ACCEPTED)
+        else:
+            return Response(returnData, status = status.HTTP_400_BAD_REQUEST)
 
 
 

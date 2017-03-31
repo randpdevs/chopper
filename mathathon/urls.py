@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^genQues/', include('genQues.urls')),
     url(r'^login/', include('login.urls')),
 
+
 ]

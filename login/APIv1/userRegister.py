@@ -7,7 +7,7 @@ def userRegister(request):
 	age = request['userAge']
 	country = request['userCountry']
 	email = request['emailID']
-	password = request['userPassword']
+	password = str(request['userPassword'])
 	password = bcrypt.hashpw(str(password), bcrypt.gensalt())
 	userObj = UserModel()
 	userObj.UserName = userName

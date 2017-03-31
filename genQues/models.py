@@ -4,24 +4,9 @@ from django.db import models
 
 # Create your models here.
 
-class QuesSet(models.Model):
-    questionID=models.AutoField(primary_key=True)
-    questionSet=models.TextField(null=False,blank=False)
-    questionTimeStamp=models.DateTimeField(null=False,blank=False)
-    def __unicode__(self):
-        return unicode(self.questionID)
-
-
-class QuesSet_v1(models.Model):
-    questionID=models.AutoField(primary_key=True)
-    questionSet=models.TextField(null=False,blank=False)
-    questionTimeStamp=models.IntegerField(null=False,blank=False)
-    def __unicode__(self):
-        return unicode(self.questionID)
-
 class QuesSet_v2(models.Model):
     questionID = models.AutoField(primary_key=True)
-    questionDate = models.CharField(max_length=255,null = False, blank = False)
+    questionDate = models.DateTimeField(null = False, blank = False)
     questionSet = models.TextField(null=False, blank=False)
     questionTimeStamp = models.IntegerField(null=False, blank=False)
     questionEndStamp = models.IntegerField(null=False,blank = False)
@@ -38,3 +23,11 @@ class rankingSet(models.Model):
     userScore=models.FloatField(null=False,blank=False)
     def __unicode__(self):
         return unicode(self.resultNumber)
+
+
+class ApiPassword(models.Model):
+    apiID = models.AutoField(primary_key=True)
+    apiName = models.TextField(null = False, blank = False)
+    apiPassword = models.TextField(null = False, blank = False)
+    def __unicode__(self):
+        return unicode(self.apiName)
