@@ -6,7 +6,7 @@ import requests
 import responses
 import json
 import datetime
-from APIv1 import genQuestion, getQuestion, getRanking, submitRanking, apiPassword
+from APIv1 import genQuestion, getQuestion, getRanking, submitRanking, apiPassword, deleteRanking
 # Create your views here.
 class getRankApi(APIView):
 
@@ -100,6 +100,19 @@ class ModifyApiPassword(APIView):
 
 
         returnData = apiPassword.modifyPassword(request.data)
+        if returnData != '400':
+            return Response(returnData, status=status.HTTP_202_ACCEPTED)
+        else:
+            return Response(returnData, status = status.HTTP_400_BAD_REQUEST)
+
+
+class DeleteRankingAPI(APIView):
+
+
+    def post(self, request, format=None):
+
+
+        returnData = deleteRanking.deletePreviousRank(request.data)
         if returnData != '400':
             return Response(returnData, status=status.HTTP_202_ACCEPTED)
         else:

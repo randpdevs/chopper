@@ -13,4 +13,6 @@ urlpatterns = [
     url(r'^deleteques/$', views.DeleteQues.as_view()),
     url(r'^setapipassword/$', views.SetApiPassword.as_view()),
     url(r'^modifyapipassword/$', views.ModifyApiPassword.as_view()),
+    url(r'^deleterankingset/$', views.DeleteRankingAPI.as_view()),
+
 ]
