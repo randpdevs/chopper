@@ -7,7 +7,7 @@ def submitRank(data):
         rankingObj.userName = data['userName']
         rankingObj.userScore = data['userScore']
         rankingObj.save()
-        return "Success"
+        return "202-1"
     except Exception as e:
         print e
         return '400'

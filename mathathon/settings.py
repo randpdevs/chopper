@@ -82,9 +82,9 @@ WSGI_APPLICATION = 'mathathon.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mathathon',
-        'USER': 'prakhar',
-        'PASSWORD': 'kurosaki',
+        'NAME': 'calcoff',
+        'USER': 'randp',
+        'PASSWORD': 'randpdevs',
         'HOST': 'localhost',
         'PORT': '',
     }

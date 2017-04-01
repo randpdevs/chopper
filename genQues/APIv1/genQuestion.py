@@ -60,9 +60,7 @@ def quesSetForTomorrow(request):
     try:
         apiPass = ApiPassword.objects.get(apiName='quesSetForTomorrow').apiPassword
     except:
-        return 'api does not have a password'
-
-
+        return '404-1'
     if bcrypt.checkpw(str(request['password']),str(apiPass)):
         try:
             today = datetime.datetime.now().date()
@@ -74,9 +72,8 @@ def quesSetForTomorrow(request):
                 if quesObjCount==0:
                     flag=True
             except Exception as e:
-                pass
+                return '404'
             if flag:
-                #1441
                 for i in range(1,1441):
                     questionSetObj = QuesSet_v2()
                     questionSetObj.questionDate = tomorrow
@@ -94,13 +91,13 @@ def quesSetForTomorrow(request):
                     epochTime = epochTime+30
                     questionSetObj.questionBoutEndStamp = epochTime
                     questionSetObj.save()
-                return "generated"
+                return "202-1"
             else:
-                return "Already_generated"
+                return "202-2"
         except Exception as e:
             return '400'
     else:
-        return 'wrong password'
+        return '409-1'
 
 
 def quesSetForToday(request):
@@ -108,7 +105,7 @@ def quesSetForToday(request):
         apiPass = ApiPassword.objects.get(apiName= 'quesSetForToday').apiPassword
     except Exception as e:
         print e
-        return 'api is not password protected'
+        return '404-1'
     if bcrypt.checkpw(str(request['password']), str(apiPass)):
         today = datetime.datetime.now().date()
         epochTime = int(today.strftime('%s'))
@@ -118,9 +115,8 @@ def quesSetForToday(request):
             if quesObjCount==0:
                 flag=True
         except Exception as e:
-            return "404"
+            return "400"
         if flag:
-            #1441
             for i in range(1,1441):
                 questionSetObj = QuesSet_v2()
                 questionSetObj.questionDate = today
@@ -138,18 +134,18 @@ def quesSetForToday(request):
                 epochTime = epochTime+30
                 questionSetObj.questionBoutEndStamp = epochTime
                 questionSetObj.save()
-            return "generated"
+            return "202-1"
         else:
-            return "Already_generated"
+            return "202-2"
     else:
-        return "wrong password"
+        return "409-1"
 
 
 def deleteQuestion(request):
     try:
         apiPass = ApiPassword.objects.get(apiName = 'deleteQuestion').apiPassword
     except Exception as e :
-        return 'api is not password protected'
+        return '404-1'
     if bcrypt.checkpw(str(request['password']), str(apiPass)):
         try:
             if request['day'] == 'tomorrow':
@@ -159,10 +155,10 @@ def deleteQuestion(request):
             elif request['day'] == 'today':
                 quesObj = QuesSet_v2.objects.filter(questionDate=datetime.datetime.now().date())
             quesObj.delete()
-            return "Done"
+            return "202-1"
 
         except Exception as e:
             print e
-            return "Not done"
+            return "400-1"
     else:
-        return "wrong password"
+        return "409-1"

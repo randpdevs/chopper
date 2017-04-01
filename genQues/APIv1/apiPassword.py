@@ -3,10 +3,13 @@ import bcrypt
 
 
 def setPassword(request):
-    passwordObj = ApiPassword()
+    try:
+        passwordObj = ApiPassword()
+    except:
+        return '400'
     try:
         ApiPassword.objects.get(apiName=request['apiName'])
-        return "password already set"
+        return "409-1"
     except:
         passwordObj.apiName = request['apiName']
         passwordObj.apiPassword = bcrypt.hashpw(str(request['apiPassword']), bcrypt.gensalt())
@@ -16,11 +19,11 @@ def setPassword(request):
 def modifyPassword(request):
     try:
         passwordObj = ApiPassword.objects.get(apiName=request['apiName'])
-        if bcrypt.checkpw(str(request['oldPassword']),str(passwordObj.apiPassword)):
-            passwordObj.apiPassword = bcrypt.hashpw(str(request['newPassword']), bcrypt.gensalt())
-        else:
-            return "419-1"
-        passwordObj.save()
-        return '202'
-    except Exception as e:
-        return '404'
+    except:
+        return '404-2'
+    if bcrypt.checkpw(str(request['oldPassword']),str(passwordObj.apiPassword)):
+        passwordObj.apiPassword = bcrypt.hashpw(str(request['newPassword']), bcrypt.gensalt())
+    else:
+        return "409-1"
+    passwordObj.save()
+    return '202'
