@@ -5,4 +5,6 @@ from .models import *
 admin.site.register(rankingSet)
 admin.site.register(QuesSet_v2)
 admin.site.register(ApiPassword)
+admin.site.register(Top10Model)
+
 

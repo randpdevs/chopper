@@ -18,7 +18,7 @@ class QuesSet_v2(models.Model):
 #
 class rankingSet(models.Model):
     resultNumber=models.AutoField(primary_key=True)
-    questionA=models.IntegerField(null=False,blank=False)
+    questionID=models.IntegerField(null=False,blank=False)
     userName=models.CharField(max_length=255,null=False,blank=False)
     userScore=models.FloatField(null=False,blank=False)
     def __unicode__(self):
@@ -31,3 +31,11 @@ class ApiPassword(models.Model):
     apiPassword = models.TextField(null = False, blank = False)
     def __unicode__(self):
         return unicode(self.apiName)
+
+
+class Top10Model(models.Model):
+    rID = models.AutoField(primary_key=True)
+    questionID = models.IntegerField(null=False,blank=False)
+    top10User = models.TextField(null = False, blank=False)
+    def __unicode__(self):
+        return unicode(self.questionID)

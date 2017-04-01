@@ -3,7 +3,7 @@ from ..models import *
 def submitRank(data):
     try:
         rankingObj = rankingSet()
-        rankingObj.questionA = data['questionID']
+        rankingObj.questionID = data['questionID']
         rankingObj.userName = data['userName']
         rankingObj.userScore = data['userScore']
         rankingObj.save()

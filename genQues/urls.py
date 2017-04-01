@@ -14,5 +14,5 @@ urlpatterns = [
     url(r'^setapipassword/$', views.SetApiPassword.as_view()),
     url(r'^modifyapipassword/$', views.ModifyApiPassword.as_view()),
     url(r'^deleterankingset/$', views.DeleteRankingAPI.as_view()),
-
+    url(r'^toptenrank/$', views.Top10RankingAPI.as_view()),
 ]

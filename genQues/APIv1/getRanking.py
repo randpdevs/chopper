@@ -2,7 +2,7 @@ from ..models import *
 
 def rankingFunction(data):
     try:
-        rankingObj = rankingSet.objects.filter(questionA=data['questionID']).order_by('-userScore')
+        rankingObj = rankingSet.objects.filter(questionID=data['questionID']).order_by('-userScore')
         sendData = []
         rank = 0
         for i in rankingObj:
