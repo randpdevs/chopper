@@ -4,6 +4,6 @@ import bcrypt
 def userLogin(request):
     userObject = UserModel.objects.get(UserName=request['userName'])
     if bcrypt.checkpw(str(request['password']),str(userObject.Password)):
-        return "Login succeded"
+        return 202
     else:
-        return "Wrong password"
+        return 400

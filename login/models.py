@@ -6,10 +6,10 @@ from django.db import models
 
 class UserModel(models.Model):
     Uid=models.AutoField(primary_key=True)
-    UserName=models.CharField(max_length=255,blank=False,null=False)
+    UserName=models.CharField(max_length=255,blank=False,null=False,unique=True)
     EmailID=models.EmailField(blank=False,null=False)
-    Age = models.CharField(max_length=100, blank = False, null = False)
-    Country = models.CharField(max_length=255,blank=False, null=False)
+    Age = models.CharField(max_length=100, blank = True, null = True)
+    Country = models.CharField(max_length=255,blank=True, null=True)
     Password=models.CharField(max_length=255, blank=False, null=False)
     def __unicode__(self):
         return unicode(self.UserName)

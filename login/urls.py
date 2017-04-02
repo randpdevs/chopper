@@ -6,5 +6,6 @@ app_name = 'login'
 urlpatterns = [
     url(r'^register/$', views.userRegisterAPI.as_view()),
     url(r'^login/$', views.userLoginAPI.as_view()),
+    url(r'^checkusername/$', views.CheckUserNameAPI.as_view()),
 
 ]
