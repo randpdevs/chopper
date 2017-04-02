@@ -20,7 +20,7 @@ def topTenRanking(request):
                 topTenObj.questionID = request['questionID']
                 topTenObj.top10User = json.dumps(rankData)
                 topTenObj.save()
-                return '202-1'
+                return rankData
             else:
                 rank=0
                 rankData = []
@@ -30,7 +30,8 @@ def topTenRanking(request):
                 topTenObj.questionID = request['questionID']
                 topTenObj.top10User = json.dumps(rankData)
                 topTenObj.save()
-            return '202-1'
+                return rankData
+
         else:
             return "202-2"
     except Exception as e:
