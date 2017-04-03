@@ -7,7 +7,7 @@ def rankingFunction(data):
         rank = 0
         for i in rankingObj:
             rank = rank+1
-            sendData.append({"userName":i.userName,"Rank":rank,"userScore":i.userScore})
+            sendData.append({"userName":i.userName,"Rank":rank,"userScore":i.userScore,"correctans":i.correctans,"wrongans":i.wrongans})
         return sendData
     except Exception as e :
         return '400'

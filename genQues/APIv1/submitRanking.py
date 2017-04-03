@@ -6,6 +6,8 @@ def submitRank(data):
         rankingObj.questionID = data['questionID']
         rankingObj.userName = data['userName']
         rankingObj.userScore = data['userScore']
+        rankingObj.correctans = data['correctans']
+        rankingObj.wrongans = data['wrongans']
         rankingObj.save()
         return "202-1"
     except Exception as e:
