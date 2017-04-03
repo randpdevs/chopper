@@ -99,7 +99,7 @@ class FetchServerTime(APIView):
 
     def post(self, request, format=None):
 
-        returnData = str(int(datetime.datetime.today().strftime('%s')))
+        returnData = (int(datetime.datetime.today().strftime('%s')))
         return Response(returnData, status=status.HTTP_202_ACCEPTED)
 
 
