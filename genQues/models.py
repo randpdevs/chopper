@@ -21,8 +21,8 @@ class rankingSet(models.Model):
     questionID=models.IntegerField(null=False,blank=False)
     userName=models.CharField(max_length=255,null=False,blank=False)
     userScore=models.FloatField(null=False,blank=False)
-    correctans = models.IntegerField(null=False, blank = False)
-    wrongans=models.IntegerField(null=False,blank=True)
+    correctans = models.IntegerField(null=True, blank = True)
+    wrongans=models.IntegerField(null=True,blank=True)
     def __unicode__(self):
         return unicode(self.resultNumber)
 
