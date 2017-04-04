@@ -1,15 +1,15 @@
 from ..models import  *
 import bcrypt
 
-def deletePreviousRank(request):
+def deletePreviousRank(password):
     try:
         apiPass = ApiPassword.objects.get(apiName = 'deletePreviousRank')
     except:
         return "404-1"
 
-    if bcrypt.checkpw(str(request['password']), str(apiPass)):
+    if bcrypt.checkpw(str(password), str(apiPass)):
         try:
-            rankingObj = rankingSet().objects.filter(questionA = request['questionID'])
+            rankingObj = rankingSet().objects.all()
             rankingObj.delete()
             return '202-1'
         except Exception as e:

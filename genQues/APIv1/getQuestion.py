@@ -2,6 +2,7 @@ from ..models import *
 import datetime
 from time import time
 import json
+from . import deleteRanking
 import bcrypt
 
 def getQuestionSetv2(request):
@@ -24,6 +25,7 @@ def getQuestionSetv2(request):
                                 "StartTime": int(time()),"BoutEndTime":int(item.questionBoutEndStamp)})
                 for item in a:
                     dataset.append(item)
+            deleteRanking.deletePreviousRank(request['password'])
             return dataset
         except Exception as e:
             return '400-1' 

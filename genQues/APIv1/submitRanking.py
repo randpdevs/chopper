@@ -1,4 +1,5 @@
 from ..models import *
+from login.models import UserModel
 
 def submitRank(data):
     try:
@@ -6,10 +7,15 @@ def submitRank(data):
         rankingObj.questionID = data['questionID']
         rankingObj.userName = data['userName']
         rankingObj.userScore = data['userScore']
+        try:
+            userModelObj = UserModel().objects.get(UserName = data['userName'])
+            userModelObj.score = max(data['userScore'],userModelObj.score)
+            userModelObj.save()
+        except :
+            return '404'
         rankingObj.correctans = data['correctans']
         rankingObj.wrongans = data['wrongans']
         rankingObj.save()
         return "202-1"
     except Exception as e:
-        print e
         return '400'

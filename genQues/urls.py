@@ -15,4 +15,6 @@ urlpatterns = [
     url(r'^modifyapipassword/$', views.ModifyApiPassword.as_view()),
     url(r'^deleterankingset/$', views.DeleteRankingAPI.as_view()),
     url(r'^toptenrank/$', views.Top10RankingAPI.as_view()),
+    url(r'^leaderboard/$', views.LeaderBoardAPI.as_view()),
+
 ]

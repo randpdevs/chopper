@@ -6,7 +6,7 @@ import requests
 import responses
 import json
 import datetime
-from APIv1 import genQuestion, getQuestion, getRanking, submitRanking, apiPassword, deleteRanking, topRanking
+from APIv1 import genQuestion, getQuestion, getRanking, submitRanking, apiPassword, deleteRanking, topRanking, leaderboard
 # Create your views here.
 class getRankApi(APIView):
 
@@ -165,3 +165,13 @@ class Top10RankingAPI(APIView):
             return Response(returnData, status=status.HTTP_202_ACCEPTED)
         else:
             return Response(returnData, status=status.HTTP_202_ACCEPTED)
+
+class LeaderBoardAPI(APIView):
+    def post(self,request, format = None):
+        returnData =  leaderboard.getLeaderboard()
+        if returnData != '400':
+            return Response(returnData, status=status.HTTP_202_ACCEPTED)
+        else:
+            return Response(returnData, status=status.HTTP_400_BAD_REQUEST)
+
+
