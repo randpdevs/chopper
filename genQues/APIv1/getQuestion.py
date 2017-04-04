@@ -31,7 +31,7 @@ def getQuestionSetv2(request):
                 deleteRanking.deletePreviousRank(request['password'])
             return dataset
         except Exception as e:
-            return '400-1' 
+            return str(e)
     else:
         return "409-1"
 
