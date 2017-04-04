@@ -11,6 +11,7 @@ class UserModel(models.Model):
     Age = models.CharField(max_length=100, blank = True, null = True)
     Country = models.CharField(max_length=255,blank=True, null=True)
     Password=models.CharField(max_length=255, blank=False, null=False)
-    UserScore = models.FloatField(default = 0.0, null = True, blank = True)
+    UserScore = models.FloatField(default = 0.00, null = True, blank = False)
+
     def __unicode__(self):
         return unicode(self.UserName)
