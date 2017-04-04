@@ -15,6 +15,7 @@ def getQuestionSetv2(request):
         today = datetime.datetime.today()
         epochTime_today = int(datetime.datetime.now().date().strftime('%s'))
         epochTime = int(today.strftime('%s'))
+        endTime=""
         try:
             fetchEpochTime=epochTime_today+((epochTime-epochTime_today)/60)*60
             quesObj=QuesSet_v2.objects.filter(questionTimeStamp=fetchEpochTime)
@@ -23,9 +24,11 @@ def getQuestionSetv2(request):
                 a = json.loads(item.questionSet)
                 dataset.append({"QuesSet": item.questionID, "EndTime": int(item.questionEndStamp),
                                 "StartTime": int(time()),"BoutEndTime":int(item.questionBoutEndStamp)})
+                endTime=int(item.questionBoutEndStamp)
                 for item in a:
                     dataset.append(item)
-            deleteRanking.deletePreviousRank(request['password'])
+            if (endTime-epochTime>0):
+                deleteRanking.deletePreviousRank(request['password'])
             return dataset
         except Exception as e:
             return '400-1' 

@@ -9,8 +9,9 @@ def deletePreviousRank(password):
 
     if bcrypt.checkpw(str(password), str(apiPass)):
         try:
-            rankingObj = rankingSet().objects.all()
-            rankingObj.delete()
+            rankingObj = rankingSet.objects.all()
+            if (rankingObj.count()>0):
+                rankingObj.delete()
             return '202-1'
         except Exception as e:
             return '404-2'

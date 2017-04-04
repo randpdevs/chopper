@@ -117,6 +117,7 @@ def quesSetForToday(request):
         except Exception as e:
             return "400"
         if flag:
+
             for i in range(1,1441):
                 questionSetObj = QuesSet_v2()
                 questionSetObj.questionDate = today

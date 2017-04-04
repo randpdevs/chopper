@@ -8,14 +8,15 @@ def submitRank(data):
         rankingObj.userName = data['userName']
         rankingObj.userScore = data['userScore']
         try:
-            userModelObj = UserModel().objects.get(UserName = data['userName'])
+            userModelObj = UserModel.objects.get(UserName = data['userName'])
             userModelObj.score = max(data['userScore'],userModelObj.score)
             userModelObj.save()
         except :
-            return '404'
+            pass
         rankingObj.correctans = data['correctans']
         rankingObj.wrongans = data['wrongans']
         rankingObj.save()
         return "202-1"
     except Exception as e:
+        print "Error:",e
         return '400'
