@@ -28,7 +28,7 @@ def getQuestionSetv2(request):
                 for item in a:
                     dataset.append(item)
             if (endTime-epochTime>0):
-                deleteRanking.deletePreviousRank(request['password'])
+                deleteRanking.deletePreviousRank(str(request['password']))
             return dataset
         except Exception as e:
             return str(e)
