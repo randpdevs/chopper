@@ -21,6 +21,7 @@ def rankingFunctionv_1(data):
         countObj = rankingObj.count()
         rankData = []
         userRank = 0
+        rankData.append({"TotalRank":countObj})
         if countObj < 10:
             rank = 0
             for i in rankingObj[:countObj]:
@@ -40,8 +41,10 @@ def rankingFunctionv_1(data):
                 if i.userName == str(data['userName']):
                     userRank = rank-1
 
-
-
+        rankData.append({"userName": "*", "Rank": "*",
+                         "userScore": "*",
+                         "correctans": "*",
+                         "wrongans": "*"})
 
         if userRank >= 10:
             try:
@@ -65,6 +68,10 @@ def rankingFunctionv_1(data):
                                  "wrongans":rankingObj[userRank+2].wrongans})
             except Exception as e:
                 pass
+            rankData.append({"userName": "*", "Rank": "*",
+                             "userScore": "*",
+                             "correctans": "*",
+                             "wrongans": "*"})
 
             return rankData
         else:
