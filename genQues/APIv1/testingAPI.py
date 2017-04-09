@@ -17,12 +17,3 @@ def testSubmitScore(request):
 
 
 
-
-
-class rankingSet(models.Model):
-    resultNumber=models.AutoField(primary_key=True)
-    questionID=models.IntegerField(null=False,blank=False)
-    userName=models.CharField(max_length=255,null=False,blank=False)
-    userScore=models.FloatField(null=False,blank=False)
-    correctans = models.IntegerField(null=True, blank = True)
-    wrongans=models.IntegerField(null=True,blank=True)
