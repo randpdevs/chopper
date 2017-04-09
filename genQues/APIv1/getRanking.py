@@ -50,11 +50,12 @@ def rankingFunctionv_1(data):
                 if i.userName == str(data['userName']):
                     userRank = rank-1
 
-        rankData.append({"userName": "", "Rank": "","userScore": "","correctans": "","wrongans": ""})
-        rankData.append({"userName": "Rank", "Rank": "", "userScore": "near", "correctans": "you", "wrongans": ""})
-        rankData.append({"userName": "", "Rank": "", "userScore": "", "correctans": "", "wrongans": ""})
 
         if userRank >= 10:
+            rankData.append({"userName": "", "Rank": "", "userScore": "", "correctans": "", "wrongans": ""})
+            rankData.append({"userName": "Rank", "Rank": "", "userScore": "near", "correctans": "you", "wrongans": ""})
+            rankData.append({"userName": "", "Rank": "", "userScore": "", "correctans": "", "wrongans": ""})
+
             try:
                 rankData.append({"userName": rankingObj[userRank-2].userName, "Rank": userRank-1,
                                  "userScore": rankingObj[userRank-2].userScore,"correctans":rankingObj[userRank-2].correctans,
@@ -78,7 +79,7 @@ def rankingFunctionv_1(data):
                 print e
                 pass
             rankData.append({"userName": "", "Rank": "", "userScore": "", "correctans": "", "wrongans": ""})
-            rankData.append({"userName": "Frenemies", "Rank": "Rank", "userScore": "", "correctans": "", "wrongans": ""})
+            rankData.append({"userName": "Frenemies", "Rank": "", "userScore": "Rank", "correctans": "", "wrongans": ""})
             rankData.append({"userName": "", "Rank": "", "userScore": "", "correctans": "", "wrongans": ""})
 
             userObj = UserModel.objects.get(UserName = data['userName'])
