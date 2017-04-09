@@ -12,7 +12,7 @@ class UserModel(models.Model):
     Country = models.CharField(max_length=255,blank=True, null=True)
     Password=models.CharField(max_length=255, blank=False, null=False)
     UserScore = models.FloatField(default = 0.00, null = True, blank = False)
-    UserFriends = models.ManyToManyField('UserModel')
+    UserFriends = models.ManyToManyField('UserModel',blank=True, null=True)
 
     class Meta:
         ordering = ["-UserScore"]
