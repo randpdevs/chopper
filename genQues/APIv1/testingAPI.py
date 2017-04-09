@@ -7,6 +7,7 @@ def testSubmitScore(request):
     questionID = request['questionID']
     for i in range(0,num):
         rankingObj = rankingSet()
+        rankingObj.questionID = questionID
         rankingObj.userName = str(i)
         rankingObj.userScore = i
         rankingObj.correctans = i
