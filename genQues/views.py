@@ -6,7 +6,7 @@ import requests
 import responses
 import json
 import datetime
-from APIv1 import genQuestion, getQuestion, getRanking, submitRanking, apiPassword, deleteRanking, topRanking, leaderboard
+from APIv1 import genQuestion, getQuestion, getRanking, submitRanking, apiPassword, deleteRanking, topRanking, leaderboard, testingAPI
 # Create your views here.
 class getRankApi(APIView):
 
@@ -179,6 +179,15 @@ class LeaderBoardAPI(APIView):
 class GetRankingV1(APIView):
     def post(self,request, format = None):
         returnData =  getRanking.rankingFunctionv_1(request.data)
+        if returnData != '400':
+            return Response(returnData, status=status.HTTP_202_ACCEPTED)
+        else:
+            return Response(returnData, status=status.HTTP_400_BAD_REQUEST)
+
+
+class TestSubmiScoreAPI(APIView):
+    def post(self,request, format = None):
+        returnData =  testingAPI.testSubmitScore(request.data)
         if returnData != '400':
             return Response(returnData, status=status.HTTP_202_ACCEPTED)
         else:

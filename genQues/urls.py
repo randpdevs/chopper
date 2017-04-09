@@ -17,5 +17,6 @@ urlpatterns = [
     url(r'^deleterankingset/$', views.DeleteRankingAPI.as_view()),
     url(r'^toptenrank/$', views.Top10RankingAPI.as_view()),
     url(r'^leaderboard/$', views.LeaderBoardAPI.as_view()),
+    url(r'^testsubmitscore/$', views.TestSubmiScoreAPI.as_view()),
 
 ]
