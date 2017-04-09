@@ -16,6 +16,7 @@ def getQuestionSetv2(request):
         epochTime_today = int(datetime.datetime.now().date().strftime('%s'))
         epochTime = int(today.strftime('%s'))
         endTime=""
+        questionsetID = ""
         try:
             fetchEpochTime=epochTime_today+((epochTime-epochTime_today)/60)*60
             quesObj=QuesSet_v2.objects.filter(questionTimeStamp=fetchEpochTime)
@@ -25,9 +26,12 @@ def getQuestionSetv2(request):
                 dataset.append({"QuesSet": item.questionID, "EndTime": int(item.questionEndStamp),
                                 "StartTime": int(time()),"BoutEndTime":int(item.questionBoutEndStamp)})
                 endTime=int(item.questionBoutEndStamp)
+                questionsetID = item.questionID
+
                 for item in a:
                     dataset.append(item)
-            
+            rankingObj = rankingSet.objects.all().exclude(questionID= questionsetID)
+            rankingObj.delete()
             return dataset
         except Exception as e:
             return str(e)

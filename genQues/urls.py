@@ -6,6 +6,7 @@ app_name = 'genQues'
 urlpatterns = [
     url(r'^getquestion/$', views.getQuesApi2.as_view()),
     url(r'^getranking/$', views.getRankApi.as_view()),
+    url(r'^getranking1/$', views.GetRankingV1.as_view()),
     url(r'^submitranking/$', views.submitRankApi.as_view()),
     url(r'^genquestfortomorrow/$', views.genQuesAPIForTomorrow.as_view()),
     url(r'^genquestfortoday/$', views.genQuesAPIForToday.as_view()),

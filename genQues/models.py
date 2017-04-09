@@ -23,6 +23,10 @@ class rankingSet(models.Model):
     userScore=models.FloatField(null=False,blank=False)
     correctans = models.IntegerField(null=True, blank = True)
     wrongans=models.IntegerField(null=True,blank=True)
+
+    class Meta:
+        ordering = ["-userScore", 'correctans']
+
     def __unicode__(self):
         return unicode(self.resultNumber)
 
@@ -41,3 +45,4 @@ class Top10Model(models.Model):
     top10User = models.TextField(null = False, blank=False)
     def __unicode__(self):
         return unicode(self.questionID)
+

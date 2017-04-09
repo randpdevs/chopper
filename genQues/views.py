@@ -175,3 +175,12 @@ class LeaderBoardAPI(APIView):
             return Response(returnData, status=status.HTTP_400_BAD_REQUEST)
 
 
+
+class GetRankingV1(APIView):
+    def post(self,request, format = None):
+        returnData =  getRanking.rankingFunctionv_1(request.data)
+        if returnData != '400':
+            return Response(returnData, status=status.HTTP_202_ACCEPTED)
+        else:
+            return Response(returnData, status=status.HTTP_400_BAD_REQUEST)
+

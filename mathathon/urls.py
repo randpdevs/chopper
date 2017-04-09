@@ -20,6 +20,4 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^genques/', include('genQues.urls')),
     url(r'^login/', include('login.urls')),
-
-
 ]

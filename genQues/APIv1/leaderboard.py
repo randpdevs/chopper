@@ -2,7 +2,7 @@ from login.models import UserModel
 
 def getLeaderboard():
     try:
-        leaderboardObj = UserModel.objects.all().order_by('-UserScore')[:10]
+        leaderboardObj = UserModel.objects.all()[:10]
         sendData = []
         rank = 0
         for i in leaderboardObj:
