@@ -32,6 +32,8 @@ def getQuestionSetv2(request):
                     dataset.append(item)
             rankingObj = rankingSet.objects.all().exclude(questionID= questionsetID)
             rankingObj.delete()
+            quesObj = QuesSet_v2.objects.filter(questionID__lt=questionsetID)
+            quesObj.delete()
             return dataset
         except Exception as e:
             return str(e)
