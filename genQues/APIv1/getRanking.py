@@ -41,10 +41,9 @@ def rankingFunctionv_1(data):
                 if i.userName == str(data['userName']):
                     userRank = rank-1
 
-        rankData.append({"userName": "*", "Rank": "*",
-                         "userScore": "*",
-                         "correctans": "*",
-                         "wrongans": "*"})
+        rankData.append({"userName": "", "Rank": "","userScore": "","correctans": "","wrongans": ""})
+        rankData.append({"userName": "Rank", "Rank": "", "userScore": "near", "correctans": "you", "wrongans": ""})
+        rankData.append({"userName": "", "Rank": "", "userScore": "", "correctans": "", "wrongans": ""})
 
         if userRank >= 10:
             try:
@@ -68,10 +67,8 @@ def rankingFunctionv_1(data):
                                  "wrongans":rankingObj[userRank+2].wrongans})
             except Exception as e:
                 pass
-            rankData.append({"userName": "*", "Rank": "*",
-                             "userScore": "*",
-                             "correctans": "*",
-                             "wrongans": "*"})
+            rankData.append({"userName": "", "Rank": "", "userScore": "", "correctans": "", "wrongans": ""})
+            rankData.append({"userName": "", "Rank": "", "userScore": "", "correctans": "", "wrongans": ""})
 
             return rankData
         else:
