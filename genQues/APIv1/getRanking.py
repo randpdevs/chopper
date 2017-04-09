@@ -17,7 +17,7 @@ def rankingFunction(data):
 
 def rankingFunctionv_1(data):
     try:
-        rankingObj = rankingSet.objects.filter(questionID=data['questionID']).order_by('-userScore')
+        rankingObj = rankingSet.objects.filter(questionID=data['questionID'])
         countObj = rankingObj.count()
         rankData = []
         userRank = 0
@@ -27,38 +27,43 @@ def rankingFunctionv_1(data):
                 rank = rank + 1
                 if i.userName == str(data['userName']):
                     userRank = rank-1
-                rankData.append({"userName": i.userName, "Rank": rank, "userScore": i.userScore})
-            print userRank
+                rankData.append({"userName": i.userName, "Rank": rank, "userScore": i.userScore,
+                                 "correctans":i.correctans,"wrongans":i.wrongans})
+
         else:
             rank = 0
             for i in rankingObj:
                 rank = rank + 1
                 if rank <=10:
-                    rankData.append({"userName": i.userName, "Rank": rank, "userScore": i.userScore})
+                    rankData.append({"userName": i.userName, "Rank": rank, "userScore": i.userScore,
+                                     "correctans":i.correctans,"wrongans":i.wrongans})
                 if i.userName == str(data['userName']):
                     userRank = rank-1
 
 
 
-            print userRank
+
         if userRank >= 10:
             try:
                 rankData.append({"userName": rankingObj[userRank-2].userName, "Rank": userRank-1,
-                                 "userScore": rankingObj[ userRank].userScore})
+                                 "userScore": rankingObj[ userRank-2].userScore,"correctans":rankingObj[userRank-2].correctans,
+                                 "wrongans":rankingObj[userRank-2].wrongans})
                 rankData.append({"userName": rankingObj[userRank - 1].userName, "Rank": userRank,
-                              "userScore": rankingObj[userRank].userScore})
+                              "userScore": rankingObj[userRank].userScore,"correctans":rankingObj[userRank-1].correctans,
+                                 "wrongans":rankingObj[userRank-1].wrongans})
             except Exception as e:
-                print e
-                pass
+               pass
             rankData.append({"userName": rankingObj[userRank].userName, "Rank": userRank+1,
-                                 "userScore": rankingObj[ userRank].userScore})
+                                 "userScore": rankingObj[ userRank].userScore,"correctans":rankingObj[userRank].correctans
+                                ,"wrongans":rankingObj[userRank].wrongans})
             try:
                 rankData.append({"userName": rankingObj[userRank+1].userName, "Rank": userRank+2,
-                                 "userScore": rankingObj[ userRank].userScore})
+                                 "userScore": rankingObj[ userRank].userScore,"correctans":rankingObj[userRank+1].correctans,
+                                 "wrongans":rankingObj[userRank+1].wrongans})
                 rankData.append({"userName": rankingObj[userRank+2].userName, "Rank": userRank+3,
-                              "userScore": rankingObj[userRank].userScore})
+                              "userScore": rankingObj[userRank].userScore,"correctans":rankingObj[userRank+2].correctans,
+                                 "wrongans":rankingObj[userRank+2].wrongans})
             except Exception as e:
-                print e
                 pass
 
             return rankData
@@ -69,14 +74,3 @@ def rankingFunctionv_1(data):
         return '400'
 
 
-
-        # for i in rankingObj[userRank-3:userRank]:
-        #     try:
-        #         rankData.append({"userName": i.userName, "Rank": rank, "userScore": i.userScore})
-        #     except Exception as e:
-        #         print e
-        # for i in rankingObj[userRank+1:userRank+3]:
-        #     try:
-        #         rankData.append({"userName": i.userName, "Rank": rank, "userScore": i.userScore})
-        #     except Exception as e :
-        #         print e
