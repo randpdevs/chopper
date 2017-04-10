@@ -79,14 +79,14 @@ def quesSetForTomorrow(request):
                     questionSetObj.questionDate = tomorrow
                     quesList = []
                     for j in range(0,120):
-                        quesList.append(random.choice([addition(1, 100),
-                        multiplication(1, 15), division(1, 100),
-                        subtraction(1, 100)]))
+                        quesList.append(random.choice([addition(1, 20),
+                        multiplication(1, 10), division(1, 20),
+                        subtraction(1, 20)]))
                     questionSetObj.questionSet = json.dumps(quesList)
                     questionSetObj.questionTimeStamp = epochTime
-                    epochTime = epochTime+30
+                    epochTime = epochTime+40
                     questionSetObj.questionEndStamp = epochTime
-                    epochTime = epochTime+30
+                    epochTime = epochTime+20
                     questionSetObj.questionBoutEndStamp = epochTime
                     questionSetObj.save()
                 return "202-1"
@@ -123,14 +123,14 @@ def quesSetForToday(request):
                 for j in range(0,120):
                     startOfRange=1
                     endOfRange=10
-                    quesList.append(random.choice([addition(1, 100),
-                    multiplication(1, 15), division(1, 100),
-                    subtraction(1, 100)]))
+                    quesList.append(random.choice([addition(1, 20),
+                    multiplication(1, 10), division(1, 20),
+                    subtraction(1, 20)]))
                 questionSetObj.questionSet = json.dumps(quesList)
                 questionSetObj.questionTimeStamp = epochTime
-                epochTime = epochTime+30
+                epochTime = epochTime+40
                 questionSetObj.questionEndStamp = epochTime
-                epochTime = epochTime+30
+                epochTime = epochTime+20
                 questionSetObj.questionBoutEndStamp = epochTime
                 questionSetObj.save()
             return "202-1"
