@@ -22,7 +22,7 @@ def division(startOfRange, endOfRange):
     factorsFirstNumber = factors(firstNumber)
     secondNumber = random.choice(random.sample(factorsFirstNumber,1))
     result = firstNumber/secondNumber
-    resultJson = {'firstNumber' : firstNumber, 'secondNumber' : secondNumber, 'operator': ÷",'answer' : result}
+    resultJson = {'firstNumber' : firstNumber, 'secondNumber' : secondNumber, 'operator':'/' ,'answer' : result}
     return resultJson
 
 
