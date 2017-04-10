@@ -53,7 +53,7 @@ def rankingFunctionv_1(data):
 
         if userRank >= 10:
             rankData.append({"userName": "", "Rank": "", "userScore": "", "correctans": "", "wrongans": ""})
-            rankData.append({"userName": "Rank", "Rank": "", "userScore": "near", "correctans": "you", "wrongans": ""})
+            rankData.append({"userName": "Ranks", "Rank": "", "userScore": "near", "correctans": "you", "wrongans": ""})
             rankData.append({"userName": "", "Rank": "", "userScore": "", "correctans": "", "wrongans": ""})
 
             try:
@@ -79,7 +79,7 @@ def rankingFunctionv_1(data):
                 print e
                 pass
             rankData.append({"userName": "", "Rank": "", "userScore": "", "correctans": "", "wrongans": ""})
-            rankData.append({"userName": "Frenemies", "Rank": "", "userScore": "Rank", "correctans": "", "wrongans": ""})
+            rankData.append({"userName": "Friend's", "Rank": "", "userScore": "Rank", "correctans": "", "wrongans": ""})
             rankData.append({"userName": "", "Rank": "", "userScore": "", "correctans": "", "wrongans": ""})
 
             userObj = UserModel.objects.get(UserName = data['userName'])
