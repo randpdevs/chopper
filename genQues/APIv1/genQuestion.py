@@ -42,7 +42,7 @@ def multiplication(startOfRange, endOfRange):
     firstNumber = random.randint(startOfRange, endOfRange)
     secondNumber = random.randint(startOfRange, endOfRange)
     result = firstNumber * secondNumber
-    resultJson = {'firstNumber' : firstNumber, 'secondNumber' : secondNumber, 'operator': 'X', 'answer' : result}
+    resultJson = {'firstNumber' : firstNumber, 'secondNumber' : secondNumber, 'operator': 'x', 'answer' : result}
     return resultJson
 
 
@@ -79,7 +79,6 @@ def quesSetForTomorrow(request):
                     questionSetObj.questionDate = tomorrow
                     quesList = []
                     for j in range(0,120):
-
                         quesList.append(random.choice([addition(1, 100),
                         multiplication(1, 15), division(1, 100),
                         subtraction(1, 100)]))
