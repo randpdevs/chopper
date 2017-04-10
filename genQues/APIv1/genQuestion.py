@@ -22,7 +22,7 @@ def division(startOfRange, endOfRange):
     factorsFirstNumber = factors(firstNumber)
     secondNumber = random.choice(random.sample(factorsFirstNumber,1))
     result = firstNumber/secondNumber
-    resultJson = {'firstNumber' : firstNumber, 'secondNumber' : secondNumber, 'operator': '/','answer' : result}
+    resultJson = {'firstNumber' : firstNumber, 'secondNumber' : secondNumber, 'operator': ÷",'answer' : result}
     return resultJson
 
 
@@ -42,7 +42,7 @@ def multiplication(startOfRange, endOfRange):
     firstNumber = random.randint(startOfRange, endOfRange)
     secondNumber = random.randint(startOfRange, endOfRange)
     result = firstNumber * secondNumber
-    resultJson = {'firstNumber' : firstNumber, 'secondNumber' : secondNumber, 'operator': 'x', 'answer' : result}
+    resultJson = {'firstNumber' : firstNumber, 'secondNumber' : secondNumber, 'operator': '*', 'answer' : result}
     return resultJson
 
 
@@ -79,9 +79,9 @@ def quesSetForTomorrow(request):
                     questionSetObj.questionDate = tomorrow
                     quesList = []
                     for j in range(0,120):
-                        quesList.append(random.choice([addition(1, 20),
-                        multiplication(1, 10), division(1, 20),
-                        subtraction(1, 20)]))
+                        quesList.append(random.choice([addition(1, 10),
+                        multiplication(1, 10), division(1, 10),
+                        subtraction(1, 10)]))
                     questionSetObj.questionSet = json.dumps(quesList)
                     questionSetObj.questionTimeStamp = epochTime
                     epochTime = epochTime+40
@@ -121,11 +121,9 @@ def quesSetForToday(request):
                 questionSetObj.questionDate = today
                 quesList = []
                 for j in range(0,120):
-                    startOfRange=1
-                    endOfRange=10
-                    quesList.append(random.choice([addition(1, 20),
-                    multiplication(1, 10), division(1, 20),
-                    subtraction(1, 20)]))
+                    quesList.append(random.choice([addition(1, 10),
+                    multiplication(1, 10), division(1, 10),
+                    subtraction(1, 10)]))
                 questionSetObj.questionSet = json.dumps(quesList)
                 questionSetObj.questionTimeStamp = epochTime
                 epochTime = epochTime+40
