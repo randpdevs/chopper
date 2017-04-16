@@ -30,13 +30,14 @@ def getQuestionSetv2(request):
 
                 for item in a:
                     dataset.append(item)
+            return dataset
+        except Exception as e:
+            return str(e)
+        finally:
             rankingObj = rankingSet.objects.all().exclude(questionID= questionsetID)
             rankingObj.delete()
             quesObj = QuesSet_v2.objects.filter(questionID__lt=questionsetID)
             quesObj.delete()
-            return dataset
-        except Exception as e:
-            return str(e)
     else:
         return "409-1"
 
