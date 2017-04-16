@@ -1,4 +1,4 @@
-from ..models import UserModel
+from ..models import *
 import bcrypt
 
 
@@ -15,8 +15,12 @@ def userRegister(request):
 	userObj.Country = country
 	userObj.EmailID = email
 	userObj.Password = password
+
 	try:
 		userObj.save()
+		userStatObj = UserStat()
+		userStatObj.UserName = UserModel.objects.get(UserName = request['userName'])
+		userStatObj.save()
 		return 202
 	except:
 		return 400
